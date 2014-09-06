@@ -1,3 +1,5 @@
+include ApplicationHelper
+
 def full_title(page_title)
     base_title = "Library"
     if page_title.empty?
