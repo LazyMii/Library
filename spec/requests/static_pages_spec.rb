@@ -1,71 +1,42 @@
 require 'spec_helper'
+require 'support/utilities'
 
 describe "Static pages" do
-
-    let(:base_title) { "Library" }
+    subject { page }
 
     describe "Home page" do
-        it "should have the content 'Library'" do
-            visit '/static_pages/home'
-            expect(page).to have_content('Library')
-        end
+        before { visit root_path }
 
-        it "should have the title 'Home'" do
-            visit '/static_pages/home'
-            expect(page).to have_title("#{base_title}")
-        end
-
-        it "should not have a custom page title" do
-            visit '/static_pages/home'
-            expect(page).not_to have_title('| Home')
-        end
+        it { should have_content('Library') }
+        it { should have_title(full_title('')) }
+        it { should_not have_title('| Home') }
     end
 
     describe "Help page" do
-        it "should have the content 'Help'" do
-            visit '/static_pages/help'
-            expect(page).to have_content('Help')
-        end
+        before { visit help_path }
 
-        it "should have the title 'Help'" do
-            visit '/static_pages/help'
-            expect(page).to have_title("#{base_title} | Help")
-        end
+        it{ should have_content('Help') }
+        it{ should have_title(full_title('Help')) }
     end
 
     describe "About page" do
-        it "should have the content 'About Us'" do
-            visit '/static_pages/about'
-            expect(page).to have_content('About Us')
-        end
+        before { visit about_path }
 
-        it "should have the title 'About Us'" do
-            visit '/static_pages/about'
-            expect(page).to have_title("#{base_title} | About Us")
-        end
+        it { should have_content('About Us') }
+        it { should have_title(full_title('About Us')) }
     end
 
     describe "Contact page" do
-        it "should have the content 'Contact'" do
-            visit '/static_pages/contact'
-            expect(page).to have_content('Contact')
-        end
+        before { visit contact_path }
 
-        it "should have the title 'Contact'" do
-            visit '/static_pages/contact'
-            expect(page).to have_title("#{base_title} | Contact")
-        end
+        it { should have_content('Contact') }
+        it { should have_title(full_title('Contact')) }
     end
 
     describe "Purchase Request page" do
-        it "should have the content 'Purchase Request'" do
-            visit '/static_pages/purchase_request'
-            expect(page).to have_content('Purchase Request')
-        end
+        before { visit purchase_request_path }
 
-        it "should have the title 'Purchase Request'" do
-            visit '/static_pages/purchase_request'
-            expect(page).to have_title("#{base_title} | Purchase Request")
-        end
+        it { should have_content('Purchase Request') }
+        it { should have_title(full_title('Purchase Request')) }
     end
 end

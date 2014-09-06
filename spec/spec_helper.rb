@@ -41,7 +41,7 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
+  config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 
 # The settings below are suggested to provide a good initial experience
