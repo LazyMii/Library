@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def purchase_request
+  end
 end
