@@ -42,7 +42,9 @@ group :production do
     gem 'rails_12factor'
 end
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootswatch-rails'
+gem 'twitter-bootstrap-rails',  group:  :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
