@@ -13,6 +13,7 @@ end
 
 group :test do
     gem 'selenium-webdriver'
+    gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'bcrypt-ruby', '3.1.2'
@@ -42,7 +43,7 @@ group :production do
     gem 'rails_12factor'
 end
 
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'twitter-bootstrap-rails',  group:  :development
 

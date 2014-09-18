@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'support/utilities'
+include  ApplicationHelper
 
 describe "Book pages" do
     describe "Book pages" do
