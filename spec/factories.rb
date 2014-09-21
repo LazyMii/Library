@@ -5,4 +5,9 @@ FactoryGirl.define do
         password"foobar"
         password_confirmation "foobar"
     end
+
+    factory :book do
+        title "四色問題"
+        isbn "9784105452018"
+    end
 end

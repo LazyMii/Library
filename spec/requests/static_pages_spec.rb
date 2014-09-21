@@ -63,6 +63,6 @@ describe "Static pages" do
         click_link "Library"
         expect(page).to have_title(full_title(''))
         click_link "Add Books"
-        expect(page).to have_title(full_title('Add Books'))
+        expect(page).to have_title(full_title('Adding Books'))
     end
 end

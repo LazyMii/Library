@@ -1,4 +1,15 @@
-<% provide(:title, "Add Books") %>
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
-<%= add_books_path %>
+<% provide(:title, "Adding Books") %>
+<h1>Adding Books</h1>
+
+<div class="row">
+    <div class="span6 offset3">
+        <%= form_for(@book) do |f| %>
+            <%= render 'shared/book_error_messages' %>
+
+            <%= f.label :isbn %>
+            <%= f.text_field :isbn %>
+
+            <%= f.submit "Adding book", class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>
