@@ -10,4 +10,10 @@ FactoryGirl.define do
         title "四色問題"
         isbn "9784105452018"
     end
+
+    factory :loan do
+        user_id "1"
+        book_id "8"
+        check_in Time.now
+    end
 end

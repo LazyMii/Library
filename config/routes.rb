@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'loans/new'
+
   resources :users
   resources :books
+  resources :loans
   get 'users/new'
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
-  match '/signup',           to: 'users#new',                    via: 'get'
+  match 'loaning',           to: 'loans#new',                    via: 'get'
   match '/signin',           to: 'sessions#new',                 via: 'get'
   match '/signout',          to: 'sessions#destroy',             via: 'delete'
   match '/adding_books',     to: 'books#new',                    via: 'get'
