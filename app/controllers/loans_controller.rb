@@ -14,6 +14,7 @@ class LoansController < ApplicationController
       Book.where(:isbn => isbn).find_each do |book|
         if Loan.find_by(book_id: book.id).nil?
             @loan.book_id = book.id
+            @loan.check_in = Date.today.to_time
         end
       end
       if @loan.save
@@ -21,6 +22,10 @@ class LoansController < ApplicationController
       else
           render :template => "static_pages/loan"
       end
+  end
+
+  def new
+      @loan = Loan.new
   end
 
   def destroy

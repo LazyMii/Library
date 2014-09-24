@@ -1,5 +1,6 @@
 <li>
     <%= render :text => loan.book_id %>
     <%= render :text => loan.user_id %>
+    <%= render :text => loan.check_in.to_s %>
     <%= link_to "return", loan, method: :delete %>
 </li>
