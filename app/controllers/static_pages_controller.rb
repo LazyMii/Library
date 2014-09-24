@@ -12,5 +12,14 @@ class StaticPagesController < ApplicationController
   end
 
   def purchase_request
+
+  end
+
+  def loan
+      @loan = Loan.new
+  end
+
+  def return
+      @return = Loan.new
   end
 end

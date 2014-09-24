@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   get 'loans/new'
-
   resources :users
   resources :books
   resources :loans
   get 'users/new'
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
-  match 'loaning',           to: 'loans#new',                    via: 'get'
   match '/signin',           to: 'sessions#new',                 via: 'get'
   match '/signout',          to: 'sessions#destroy',             via: 'delete'
   match '/adding_books',     to: 'books#new',                    via: 'get'
@@ -16,6 +14,8 @@ Rails.application.routes.draw do
   match '/about',            to: 'static_pages#about',           via: 'get'
   match '/contact',          to: 'static_pages#contact',         via: 'get'
   match '/purchase_request', to: 'static_pages#purchase_request',via: 'get'
+  match '/loaning',           to: 'static_pages#loan',           via: 'get'
+  match '/returning',         to: 'loans#index',         via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,10 @@
+<% provide(:title, "Returning") %>
+<h1>Returning</h1>
+
+<div class="row">
+    <div class="span6 offset3">
+        <% form_tag(:controller => "loan", :action => "delete") do %>
+            <%= text_field :param, :isbn %>
+        <% end %>
+    </div>
+</div>

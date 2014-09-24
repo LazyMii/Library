@@ -3,25 +3,28 @@ class LoansController < ApplicationController
       @loan = Loan.find(params[:id])
   end
 
+  def index
+      @my_loans = Loan.where(:user_id => current_user.id.to_s)
+  end
+
   def create
       @loan = Loan.new
       @loan.user_id = current_user.id.to_s
       isbn = params[:loan][:book_id]
       Book.where(:isbn => isbn).find_each do |book|
-        puts book.id
         if Loan.find_by(book_id: book.id).nil?
-            puts "hello"
             @loan.book_id = book.id
         end
       end
       if @loan.save
         redirect_to @loan
       else
-          render 'new'
+          render :template => "static_pages/loan"
       end
   end
 
-  def new
-      @loan = Loan.new
+  def destroy
+    Loan.find(params[:id]).destroy
+    redirect_to current_user
   end
 end

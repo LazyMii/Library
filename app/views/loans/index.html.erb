@@ -1,0 +1,8 @@
+<% provide(:title, "Loans") %>
+<h1>Loans</h1>
+
+<ul>
+<% @my_loans.each do |loan| %>
+    <%= render loan %>
+<% end %>
+</ul>
