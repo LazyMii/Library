@@ -1,0 +1,5 @@
+<li>
+<%= link_to book.title, book %>
+<%= render :text => book.isbn %>
+<%= link_to "delete", book, method: :delete %>
+</li>

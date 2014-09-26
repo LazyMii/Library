@@ -1,3 +1,5 @@
+include ApplicationHelper
+
 class LoansController < ApplicationController
   def show
       @loan = Loan.find(params[:id])
@@ -11,7 +13,10 @@ class LoansController < ApplicationController
       @loan = Loan.new
       @loan.user_id = current_user.id.to_s
       isbn = params[:loan][:book_id]
-      Book.where(:isbn => isbn).find_each do |book|
+      if not is_isbn13(isbn)
+          isbn = isbn10_to_13(isbn)
+      end
+      Book.where(:isbn_13 => isbn).find_each do |book|
         if Loan.find_by(book_id: book.id).nil?
             @loan.book_id = book.id
             @loan.check_in = Date.today.to_time
@@ -20,7 +25,7 @@ class LoansController < ApplicationController
       if @loan.save
         redirect_to @loan
       else
-          render :template => "static_pages/loan"
+          render 'new'
       end
   end
 
@@ -30,6 +35,6 @@ class LoansController < ApplicationController
 
   def destroy
     Loan.find(params[:id]).destroy
-    redirect_to current_user
+    redirect_to Loan
   end
 end

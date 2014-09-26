@@ -5,15 +5,15 @@
         <nav>
         <ul class="nav nav-tabs pull-left">
             <li><%= link_to "Add Books",           adding_books_path %></li>
+            <li><%= link_to "Book List",           Book %>
         </ul>
         <ul class="nav nav-tabs pull-right">
             <li><%= link_to "Home",                root_path %></li>
             <li><%= link_to "Help",                help_path %></li>
             <li><%= link_to "Purchase Request",    purchase_request_path %></li>
             <% if signed_in? %>
-                <li><%= link_to "Loaning",      loaning_path %></li>
-                <li><%= link_to "Returning",    returning_path %></li>
-                <li><%= link_to "Users",        '#' %></li>
+                <li><%= link_to "CheckIn",      loaning_path %></li>
+                <li><%= link_to "CheckOut",    returning_path %></li>
                 <li id="fat-menu" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Account <b class="caret"></b>

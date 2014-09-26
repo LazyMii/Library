@@ -1,35 +1,44 @@
 require 'net/http'
 require 'uri'
 require 'json'
+include ApplicationHelper
 
 class BooksController < ApplicationController
-  def show
-      @book = Book.find(params[:id])
-  end
+    def show
+        @book = Book.find(params[:id])
+    end
 
-  def create
-      result = get_json
-      title = result['items'][0]['volumeInfo']['title']
-      isbn = params[:book][:isbn]
-      @book = Book.new()
-      @book.title = title
-      @book.isbn = isbn
-      if @book.save
-          redirect_to @book
-      else
-          render 'new'
-      end
-  end
+    def index
+        @books = Book.all
+    end
 
-  def new
-      @book = Book.new
-  end
+    def create
+        isbn = params[:book][:isbn]
+        result = get_book_information(isbn)
 
-  private
-    def get_json
-        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + params[:book][:isbn]
-        uri = URI.parse(url)
-        json = Net::HTTP.get(uri)
-        return JSON.parse(json)
+        @book = Book.new()
+        @book.title = result['title']
+        @book.isbn_10 = result['isbn_10']
+        @book.isbn_13 = result['isbn_13']
+        @book.subtitle = result['subtitle']
+        @book.authors = result['authors']
+        begin
+            @book.image_link = URI.parse(result['image_link']).read
+        rescue
+        end
+        if @book.save
+            redirect_to @book
+        else
+            render 'new'
+        end
+    end
+
+    def destroy
+        Book.find(params[:id]).destroy
+        redirect_to Book
+    end
+
+    def new
+        @book = Book.new
     end
 end
