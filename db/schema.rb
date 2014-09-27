@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926091436) do
+ActiveRecord::Schema.define(version: 20140927161459) do
 
   create_table "books", force: true do |t|
     t.string   "isbn"
@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 20140926091436) do
     t.string   "authors"
     t.binary   "image_link"
     t.datetime "published_date"
-  end
-
-  create_table "images", force: true do |t|
-    t.string   "isbn"
-    t.binary   "file"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "loans", force: true do |t|
