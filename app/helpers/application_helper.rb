@@ -33,11 +33,7 @@ module ApplicationHelper
     end
 
     def is_isbn13(isbn)
-        if isbn[0..3] == "978"
-            return true
-        else
-            return false
-        end
+        isbn[0..2] == "978" ? true : false
     end
 
     def isbn10_to_13(isbn10)

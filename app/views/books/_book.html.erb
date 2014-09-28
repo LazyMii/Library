@@ -1,12 +1,10 @@
-<li>
-<%= link_to book.title, book %>
-<%= render :text => book.isbn %>
+<th><%= link_to book.title, book %></th>
+<th><%= render :text => book.isbn_13 %></th>
 <% loan = Loan.find_by(:book_id => book.id) %>
 <% if loan.nil? then %>
-    <%= render :text => "o" %>
+    <th><%= render :text => "x" %></th>
 <% else %>
     <% user = User.find_by(:id => loan.user_id) %>
-    <%= render :text => user.name %>
+    <th><%= render :text => user.name %></th>
 <% end %>
-<%= link_to "delete", book, method: :delete %>
-</li>
+<th><%= link_to "delete", book, method: :delete %></th>

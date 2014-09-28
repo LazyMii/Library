@@ -1,8 +1,16 @@
 <% provide(:title, "Books") %>
 <h1>Books</h1>
 
-<ul>
+<table border="2">
+    <tr>
+        <th><%= "Title" %></th>
+        <th><%= "ISBN" %></th>
+        <th><%= "Owner" %></th>
+        <th><%= "Delete" %></th>
+    </tr>
     <% @books.each do |book| %>
-        <%= render book %>
+        <tr>
+            <%= render book %>
+        </tr>
     <% end %>
-</ul>
+</table>
